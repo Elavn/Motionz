@@ -136,6 +136,27 @@ if (workPage && workProjects.length) {
   syncWorkRoute();
 }
 
+/* Hash routes for the full-screen sections. Keep these as client-side routes
+ * so Vercel only needs to serve the single static index.html document. */
+const routeSections = [
+  ['work', document.querySelector('#work-page')],
+  ['about', document.querySelector('#about-page')],
+  ['contact', document.querySelector('#contact-page')],
+  ['academy', document.querySelector('#academy-page')]
+].filter(([, section]) => section);
+
+function syncSectionRoute() {
+  const route = window.location.hash.slice(1).split('?')[0];
+  routeSections.forEach(([name, section]) => {
+    const active = route === name;
+    section.hidden = !active;
+    section.classList.toggle('is-active', active);
+  });
+}
+
+window.addEventListener('hashchange', syncSectionRoute);
+syncSectionRoute();
+
 /* ── Hand-drawn storyboard preloader ───────────────────────────────────── */
 const preloader = document.querySelector('#preloader');
 const preloaderCanvas = document.querySelector('#preloader-canvas');
