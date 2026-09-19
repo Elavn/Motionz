@@ -1216,13 +1216,25 @@ body.site-ready .year-counter { opacity: 1; }
   .reel-thumb { width: 44px; height: 34px; }
   .cookie-strip { right: 16px; }
   .menu-panel-header,
-  .menu-panel-inner { width: calc(100% - 28px); }
-  .menu-panel-header { min-height: 86px; }
-  .menu-panel-mark { margin-top: 20px; font-size: 2.15rem; }
+  .menu-panel-inner { width: calc(100% - 32px); }
+  .menu-panel-header {
+    min-height: 98px;
+    margin-top: 14px;
+  }
+  .menu-language,
+  .menu-close { font-size: 12px; }
+  .menu-language-active { width: 23px; height: 23px; }
+  .menu-panel-mark {
+    margin-top: 18px;
+    font-size: clamp(1.8rem, 8vw, 2.35rem);
+    line-height: .8;
+    white-space: nowrap;
+  }
+  .menu-panel-inner { min-height: calc(100% - 112px); }
   .menu-panel nav a {
-    min-height: 62px;
-    padding-top: 0;
-    font-size: clamp(2.4rem, 11vw, 4.5rem);
+    min-height: 58px;
+    padding: 0 8px;
+    font-size: clamp(2rem, 9vw, 3.6rem);
   }
   .nav-link--home span { transform: translateX(-34vw) translateY(.08em); }
   .nav-link--work span { transform: translateX(-22vw) translateY(.08em); }
