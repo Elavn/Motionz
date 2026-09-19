@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="Motionz — an independent creative studio for moving image, identity, and culture." />
+    <title>Motionz — Creative Studio</title>
+    <link rel="stylesheet" href="fonts.css" />
+    <link rel="stylesheet" href="variables.css" />
+    <link rel="stylesheet" href="app.css" />
+  </head>
+  <body>
+
+    <div class="preloader preloader-paper-mode" id="preloader" role="status" aria-label="Motionz Studio introduction">
+      <div class="preloader-paper" aria-hidden="true">
+        <p class="preloader-written" id="preloader-written"></p>
+        <div class="preloader-camera" id="preloader-camera">
+          <div class="camera-snap-lottie" id="camera-snap-lottie"></div>
+          <span class="camera-snap-fallback">camera / ready</span>
+        </div>
+      </div>
+      <canvas class="preloader-canvas" id="preloader-canvas" aria-hidden="true"></canvas>
+      <div class="preloader-svg-stage" id="preloader-svg-stage" aria-hidden="true"></div>
+      <button class="preloader-skip" id="preloader-skip" type="button">SKIP INTRO</button>
+    </div>
+
+    <div class="interaction-cue" id="interaction-cue" aria-hidden="true">
+      <span class="interaction-cue__label"></span>
+      <span class="interaction-cue__stroke"></span>
+    </div>
+    <img class="mouse-blinker" id="mouse-blinker" src="public/svgs/red_blinker.svg" alt="" aria-hidden="true">
+
+    <!-- ── TOP BAR ────────────────────────────────────────────────────────── -->
+    <header class="topbar">
+      <a class="brand-glyph" href="/" aria-label="Motionz home">M</a>
+      <button class="menu-trigger" type="button" aria-expanded="false" aria-controls="menu-panel">
+        <span class="menu-plus" aria-hidden="true">x</span> MENU
+      </button>
+    </header>
+
+    <!-- ── HERO (full viewport — only visible page) ───────────────────────── -->
+    <main class="hero" id="hero" aria-labelledby="hero-title">
+      <video class="hero-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+        <source src="public/hero.mp4" type="video/mp4" />
+      </video>
+      <div class="hero-content">
+        <h1 id="hero-title" class="wordmark">Motionz<sup>&reg;</sup></h1>
+        <p class="hero-copy">From intimate wedding moments to the energy of a packed event, Motionz Studio turns real experiences into visual stories designed to be felt long after the moment has passed.</p>
+        <p class="signature">Moments in Motion. Stories in Focus.</p>
+      </div>
+    </main>
+
+    <section class="work-page" id="work-page" aria-label="Featured work" tabindex="-1" hidden>
+      <div class="work-page-head">
+        <div><span class="work-page-count">(31)</span><span>Work</span></div>
+        <div>View: <strong id="work-view-current">01</strong> / <span id="work-view-total">05</span></div>
+      </div>
+      <div class="work-page-preview work-page-preview--top">
+        <video class="work-preview-video" autoplay muted loop playsinline preload="metadata"></video>
+        <img class="work-preview-image" alt="" hidden>
+      </div>
+      <div class="work-page-preview work-page-preview--bottom">
+        <video class="work-preview-video" autoplay muted loop playsinline preload="metadata"></video>
+        <img class="work-preview-image" alt="" hidden>
+      </div>
+
+      <div class="work-page-list" role="listbox" aria-label="Featured projects">
+        <button class="work-project work-project--right is-active" type="button" role="option" aria-selected="true" data-project="0" data-media-type="video" data-media="public/hero.mp4"><strong>ALFA ROMEO</strong><span>ENDLESSLY EMOTIVE</span><i class="work-mobile-media"><video muted loop playsinline preload="metadata" src="public/hero.mp4"></video></i></button>
+        <button class="work-project work-project--left" type="button" role="option" aria-selected="false" data-project="1" data-media-type="video" data-media="public/hero.mp4"><strong>NIKE SWIM</strong><span>INTO THE WATER</span><i class="work-mobile-media"><video muted loop playsinline preload="metadata" src="public/hero.mp4"></video></i></button>
+        <button class="work-project work-project--right" type="button" role="option" aria-selected="false" data-project="2" data-media-type="video" data-media="public/hero.mp4"><strong>SPORTPESA</strong><span>NEW AFRICAN ICONS</span><i class="work-mobile-media"><video muted loop playsinline preload="metadata" src="public/hero.mp4"></video></i></button>
+        <button class="work-project work-project--left" type="button" role="option" aria-selected="false" data-project="3" data-media-type="video" data-media="public/hero.mp4"><strong>MITSUBISHI</strong><span>ROMARIA</span><i class="work-mobile-media"><video muted loop playsinline preload="metadata" src="public/hero.mp4"></video></i></button>
+        <button class="work-project work-project--right" type="button" role="option" aria-selected="false" data-project="4" data-media-type="video" data-media="public/hero.mp4"><strong>POKERSTARS</strong><span>NEYMAR</span><i class="work-mobile-media"><video muted loop playsinline preload="metadata" src="public/hero.mp4"></video></i></button>
+      </div>
+    </section>
+
+    <section class="about-page" id="about-page" aria-labelledby="about-page-title" tabindex="-1" hidden>
+      <div class="about-opening">
+        <h1 id="about-page-title" class="about-reveal-line">Everything moves, everything remains.</h1>
+        <div class="about-scroll-ring" aria-hidden="true">SCROLL</div>
+      </div>
+      <main class="about-story-list">
+        <section class="about-story">
+          <div class="about-story-media"><video autoplay muted loop playsinline preload="metadata"><source src="public/hero.mp4" type="video/mp4"></video></div>
+          <div class="about-story-content"><span class="about-eyebrow">01 / APPROACH</span><p>Motionz is an independent moving-image studio for people, places, and moments that deserve to be remembered.</p></div>
+        </section>
+        <section class="about-story">
+          <div class="about-story-media"><video autoplay muted loop playsinline preload="metadata"><source src="public/hero.mp4" type="video/mp4"></video></div>
+          <div class="about-story-content"><span class="about-eyebrow">02 / PROCESS</span><p>We move between documentary instinct and considered direction, finding the frame inside the feeling.</p></div>
+        </section>
+        <section class="about-story">
+          <div class="about-story-media"><video autoplay muted loop playsinline preload="metadata"><source src="public/hero.mp4" type="video/mp4"></video></div>
+          <div class="about-story-content"><span class="about-eyebrow">03 / PURPOSE</span><p>Every film, photograph, and visual system is made to hold on to what time would otherwise take away.</p></div>
+        </section>
+      </main>
+    </section>
+
+    <section class="contact-page" id="contact-page" aria-labelledby="contact-page-title" tabindex="-1" hidden>
+      <div class="contact-page-inner">
+        <div class="contact-tabs" role="navigation" aria-label="Social media">
+          <a href="https://instagram.com" target="_blank" rel="noreferrer">Instagram</a>
+          <a href="https://facebook.com" target="_blank" rel="noreferrer">Facebook</a>
+          <a href="https://linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a href="mailto:hello@motionz.studio">Email</a>
+        </div>
+        <div class="contact-paper-card">
+          <p class="contact-eyebrow">Let’s make something move.</p>
+          <h1 id="contact-page-title">Tell us about<br><em>your next story.</em></h1>
+          <form class="contact-form">
+            <label><span>Name</span><input type="text" name="name" autocomplete="name" required></label>
+            <label><span>Email</span><input type="email" name="email" autocomplete="email" required></label>
+            <label><span>Project</span><input type="text" name="project"></label>
+            <label><span>Message</span><textarea name="message" rows="3"></textarea></label>
+            <button type="submit">Send enquiry <span aria-hidden="true">↗</span></button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="academy-page" id="academy-page" aria-labelledby="academy-title" tabindex="-1" hidden>
+      <div class="academy-intro" id="academy-intro">
+        <span class="academy-kicker">Motionz Academy / 001</span>
+        <h1 id="academy-title">What would you make<br><em>if you stopped waiting?</em></h1>
+        <button class="academy-enter" id="academy-enter" type="button">I’m ready <span aria-hidden="true">↗</span></button>
+      </div>
+      <div class="academy-application" id="academy-application" aria-hidden="true">
+        <div class="academy-application-head"><span>Motionz Academy</span><span>Student intake / 2026</span></div>
+        <div class="academy-form-wrap">
+          <p class="academy-kicker">Application</p>
+          <h2>Bring your point<br>of view.</h2>
+          <form class="academy-form">
+            <label><span>Your name</span><input type="text" name="name" autocomplete="name" required></label>
+            <label><span>Email address</span><input type="email" name="email" autocomplete="email" required></label>
+            <label><span>What do you want to learn?</span><input type="text" name="interest" required></label>
+            <label><span>Show us something</span><input type="url" name="portfolio" placeholder="Portfolio / Instagram / link"></label>
+            <button type="submit">Submit application <span aria-hidden="true">↗</span></button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── PROJECT REEL TICKER ────────────────────────────────────────────── -->
+    <div class="project-reel" id="project-reel" aria-label="Selected projects">
+      <div class="reel-track" aria-hidden="true">
+        <!-- Set A -->
+        <a class="reel-item" href="#project-01" tabindex="0">
+          <div class="reel-thumb reel-thumb--media">
+            <video autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+              <source src="https://res.cloudinary.com/hmghv0v7/video/upload/v1789525123/005_DcCOx6espTv.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="reel-info">
+            <span class="reel-title">ORBIT</span>
+            <span class="reel-type">IDENTITY / FILM</span>
+          </div>
+        </a>
+        <a class="reel-item" href="#project-02" tabindex="-1" aria-hidden="true">
+          <div class="reel-thumb reel-thumb--media"><video autoplay muted loop playsinline preload="metadata" aria-hidden="true"><source src="https://res.cloudinary.com/hmghv0v7/video/upload/v1789525123/005_DcCOx6espTv.mp4" type="video/mp4"></video></div>
+          <div class="reel-info">
+            <span class="reel-title">WISDOM & CO</span>
+            <span class="reel-type">CAMPAIGN / DIGITAL</span>
+          </div>
+        </a>
+        <a class="reel-item" href="#project-03" tabindex="-1" aria-hidden="true">
+          <div class="reel-thumb reel-thumb--media"><video autoplay muted loop playsinline preload="metadata" aria-hidden="true"><source src="https://res.cloudinary.com/hmghv0v7/video/upload/v1789525123/005_DcCOx6espTv.mp4" type="video/mp4"></video></div>
+          <div class="reel-info">
+            <span class="reel-title">SOSO WEDS</span>
+            <span class="reel-type">WEDDING - 2025</span>
+          </div>
+        </a>
+        <a class="reel-item" href="#contact" tabindex="-1" aria-hidden="true">
+          <div class="reel-thumb reel-thumb--media"><video autoplay muted loop playsinline preload="metadata" aria-hidden="true"><source src="https://res.cloudinary.com/hmghv0v7/video/upload/v1789525123/005_DcCOx6espTv.mp4" type="video/mp4"></video></div>
+          <div class="reel-info">
+            <span class="reel-title">ITORO WEDS</span>
+            <span class="reel-type">WEDDING - 2026</span>
+          </div>
+        </a>
+        <!-- Set B — exact duplicate for seamless CSS loop -->
+        <a class="reel-item" href="#project-01" tabindex="-1" aria-hidden="true">
+          <div class="reel-thumb reel-thumb--media">
+            <video autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+              <source src="https://res.cloudinary.com/hmghv0v7/video/upload/v1789525123/005_DcCOx6espTv.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="reel-info">
+            <span class="reel-title">ORBIT</span>
+            <span class="reel-type">IDENTITY / FILM</span>
+          </div>
+        </a>
+        <a class="reel-item" href="#project-02" tabindex="-1" aria-hidden="true">
+          <div class="reel-thumb reel-thumb--media"><video autoplay muted loop playsinline preload="metadata" aria-hidden="true"><source src="https://res.cloudinary.com/hmghv0v7/video/upload/v1789525123/005_DcCOx6espTv.mp4" type="video/mp4"></video></div>
+          <div class="reel-info">
+            <span class="reel-title">WISDOM & CO</span>
+            <span class="reel-type">CAMPAIGN / DIGITAL</span>
+          </div>
+        </a>
+        <a class="reel-item" href="#project-03" tabindex="-1" aria-hidden="true">
+          <div class="reel-thumb reel-thumb--media"><video autoplay muted loop playsinline preload="metadata" aria-hidden="true"><source src="https://res.cloudinary.com/hmghv0v7/video/upload/v1789525123/005_DcCOx6espTv.mp4" type="video/mp4"></video></div>
+          <div class="reel-info">
+            <span class="reel-title">SOSO WEDS</span>
+            <span class="reel-type">WEDDING - 2025</span>
+          </div>
+        </a>
+        <a class="reel-item" href="#contact" tabindex="-1" aria-hidden="true">
+          <div class="reel-thumb reel-thumb--media"><video autoplay muted loop playsinline preload="metadata" aria-hidden="true"><source src="https://res.cloudinary.com/hmghv0v7/video/upload/v1789525123/005_DcCOx6espTv.mp4" type="video/mp4"></video></div>
+          <div class="reel-info">
+            <span class="reel-title">ITORO WEDS</span>
+            <span class="reel-type">WEDDING - 2026</span>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- ── YEAR COUNTER ───────────────────────────────────────────────────── -->
+    <div class="year-counter" aria-label="Current year">&#9426; Motionz Studios . 2026</div>
+
+    <!-- ── MENU PANEL (full-screen overlay) ──────────────────────────────── -->
+    <aside class="menu-panel" id="menu-panel" aria-hidden="true">
+      <div class="menu-panel-header">
+        <div class="menu-language" aria-label="Language selector">
+          <span>FR</span><i aria-hidden="true">/</i><span class="menu-language-active">EN</span>
+        </div>
+        <div class="menu-panel-mark" aria-hidden="true">motionz<sup>&reg;</sup></div>
+        <button class="menu-close" type="button" aria-label="Close menu">X&nbsp; Close</button>
+      </div>
+      <div class="menu-panel-inner">
+        <nav aria-label="Main navigation">
+          <a href="/" class="nav-link nav-link--home"><span>HOME</span></a>
+          <a href="#work" class="nav-link nav-link--work"><span>WORK</span></a>
+          <a href="#about" class="nav-link nav-link--about"><span>ABOUT</span></a>
+          <a href="#contact" class="nav-link nav-link--contact"><span>CONTACT</span></a>
+          <a href="#academy" class="nav-link nav-link--academy"><span>ACADEMY</span></a>
+        </nav>
+        <div class="menu-panel-footer">
+          <a href="#privacy">(Privacy)</a>
+          <a href="#terms">TERMS &amp; CONDITIONS</a>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ── COOKIE STRIP ───────────────────────────────────────────────────── -->
+    <div class="cookie-strip" role="status">
+      <span>we use cookies, probably</span>
+      <button type="button" id="cookie-dismiss" aria-label="Dismiss cookie notice">&times;</button>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie.min.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

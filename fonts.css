@@ -1,0 +1,180 @@
+/* ==========================================================================
+   Motionz Design System — Font Face Declarations
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Recoleta — Hero supporting text
+   -------------------------------------------------------------------------- */
+@font-face {
+  font-family: 'Victoria';
+  src: url('fonts/Victoria.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Priestacy';
+  src: url('fonts/Priestacy.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Recoleta';
+  src: url('fonts/Exo2/Recoleta-RegularDEMO.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Exo 2';
+  src: url('fonts/Exo2/Exo2-Black.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* --------------------------------------------------------------------------
+   1. Editorial New (Pangram Pangram) — Hero & Headline Display
+   -------------------------------------------------------------------------- */
+@font-face {
+  font-family: 'Editorial New';
+  src: url('fonts/editorial-new/PPEditorialNew-Ultralight-BF644b21500d0c0.otf') format('opentype');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Editorial New';
+  src: url('fonts/editorial-new/PPEditorialNew-UltralightItalic-BF644b214ff1e9b.otf') format('opentype');
+  font-weight: 200;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Editorial New';
+  src: url('fonts/editorial-new/PPEditorialNew-Regular-BF644b214ff145f.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Editorial New';
+  src: url('fonts/editorial-new/PPEditorialNew-Italic-BF644b214fb0c0a.otf') format('opentype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Editorial New';
+  src: url('fonts/editorial-new/PPEditorialNew-Ultrabold-BF644b21500840c.otf') format('opentype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Editorial New';
+  src: url('fonts/editorial-new/PPEditorialNew-UltraboldItalic-BF644b214faef01.otf') format('opentype');
+  font-weight: 800;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* --------------------------------------------------------------------------
+   2. TT Firs Neue (TypeType) — Workhorse UI & Body Sans
+   -------------------------------------------------------------------------- */
+@font-face {
+  font-family: 'TT Firs Neue';
+  src: url('fonts/tt-firs/tt-firs-neue-var-roman.ttf') format('truetype-variations'),
+       url('fonts/tt-firs/tt-firs-neue-regular.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'TT Firs Neue';
+  src: url('fonts/tt-firs/tt-firs-neue-var-italic.ttf') format('truetype-variations');
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* --------------------------------------------------------------------------
+   3. Altform — Compact Meta, Badges, Condensed Labels
+   -------------------------------------------------------------------------- */
+@font-face {
+  font-family: 'Altform';
+  src: url('fonts/altform/altformtrial-light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Altform';
+  src: url('fonts/altform/altformtrial-lightitalic.otf') format('opentype');
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Altform';
+  src: url('fonts/altform/altformtrial-regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Altform';
+  src: url('fonts/altform/altformtrial-regularitalic.otf') format('opentype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Altform';
+  src: url('fonts/altform/altformtrial-bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Altform';
+  src: url('fonts/altform/altformtrial-bolditalic.otf') format('opentype');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* --------------------------------------------------------------------------
+   4. Caveat / Wasted Year — Signature Editorial Flourishes & Taglines
+   -------------------------------------------------------------------------- */
+@font-face {
+  font-family: 'Caveat';
+  src: url('fonts/caveat/Caveat-VariableFont_wght.ttf') format('truetype');
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Alias Wasted Year to Caveat directly as designated in DESIGN.md */
+@font-face {
+  font-family: 'Wasted Year';
+  src: url('fonts/caveat/Caveat-VariableFont_wght.ttf') format('truetype');
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
