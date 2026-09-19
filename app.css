@@ -231,16 +231,6 @@ body.is-dragging * { cursor: grabbing !important; }
 }
 .camera-snap-lottie,
 .camera-snap-lottie svg { width: 100%; height: 100%; }
-.camera-snap-fallback {
-  display: block;
-  padding-top: 42%;
-  font-family: var(--mono);
-  font-size: 12px;
-  letter-spacing: .12em;
-  text-align: center;
-  text-transform: uppercase;
-}
-.camera-snap-lottie:not(:empty) + .camera-snap-fallback { display: none; }
 .preloader-canvas {
   position: absolute;
   inset: 0;

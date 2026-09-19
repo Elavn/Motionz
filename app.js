@@ -177,7 +177,6 @@ if (paperPreloader) {
 
   function showCameraSnap() {
     paperPreloader.classList.add('camera-phase');
-    camera?.classList.add('is-visible');
     if (!window.lottie || !lottieContainer) {
       window.setTimeout(finishPaperPreloader, 1500);
       return;
@@ -189,6 +188,7 @@ if (paperPreloader) {
       autoplay: true,
       path: 'public/lottie/camera-snap.json'
     });
+    animation.addEventListener('DOMLoaded', () => camera?.classList.add('is-visible'), { once: true });
     animation.setSpeed(1.6);
     animation.addEventListener('complete', finishPaperPreloader);
     animation.addEventListener('data_failed', () => window.setTimeout(finishPaperPreloader, 900));
