@@ -7,38 +7,12 @@ const cookieDismiss = document.querySelector('#cookie-dismiss');
 const heroVideo    = document.querySelector('.hero-video');
 const reelTrack    = document.querySelector('.reel-track');
 const workPage     = document.querySelector('#work-page');
-const aboutPage    = document.querySelector('#about-page');
-const contactPage  = document.querySelector('#contact-page');
-const academyPage  = document.querySelector('#academy-page');
-const academyIntro = document.querySelector('#academy-intro');
-const academyApplication = document.querySelector('#academy-application');
-const academyEnter = document.querySelector('#academy-enter');
-const aboutRevealLine = document.querySelector('.about-reveal-line');
-
-academyEnter?.addEventListener('click', () => {
-  academyIntro?.classList.add('is-dismissed');
-  academyApplication?.classList.add('is-visible');
-  academyApplication?.setAttribute('aria-hidden', 'false');
-});
 const workProjects = [...document.querySelectorAll('.work-project')];
 const interactionCue = document.querySelector('#interaction-cue');
 const interactionLabel = interactionCue?.querySelector('.interaction-cue__label');
 const mouseBlinker = document.querySelector('#mouse-blinker');
 function revealSite() {
   requestAnimationFrame(() => document.body.classList.add('site-ready'));
-}
-
-function runAboutReveal() {
-  if (!aboutRevealLine) return;
-  const text = aboutRevealLine.textContent.trim();
-  aboutRevealLine.replaceChildren();
-  [...text].forEach((character, index) => {
-    const letter = document.createElement('span');
-    letter.textContent = character === ' ' ? '\u00a0' : character;
-    letter.style.setProperty('--reveal-index', index);
-    aboutRevealLine.append(letter);
-  });
-  requestAnimationFrame(() => aboutRevealLine.classList.add('is-revealing'));
 }
 
 function showInteractionCue(label, event) {
@@ -80,7 +54,6 @@ if (workPage && workProjects.length) {
   const previewImages = [...workPage.querySelectorAll('.work-preview-image')];
   const viewCurrent = workPage.querySelector('#work-view-current');
   const viewTotal = workPage.querySelector('#work-view-total');
-  const workStories = [...workPage.querySelectorAll('.work-story')];
   let activeProject = 0;
   let wheelDistance = 0;
 
@@ -131,15 +104,6 @@ if (workPage && workProjects.length) {
     project.addEventListener('focus', () => setPreview(index));
     project.addEventListener('click', () => setPreview(index));
   });
-  if ('IntersectionObserver' in window) {
-    const storyObserver = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting && entry.intersectionRatio > .45)
-          setPreview(Number(entry.target.dataset.project));
-      });
-    }, { root: workPage, threshold: [.45, .7] });
-    workStories.forEach(story => storyObserver.observe(story));
-  }
   workPage.addEventListener('wheel', event => {
     const distance = Math.abs(event.deltaY) > Math.abs(event.deltaX) ? event.deltaY : event.deltaX;
     if (Math.abs(distance) < 2) return;
@@ -150,31 +114,6 @@ if (workPage && workProjects.length) {
       wheelDistance += wheelDistance > 0 ? -stepSize : stepSize;
     }
   }, { passive: true });
-
-  workPage.addEventListener('scroll', () => {
-    if (window.innerWidth > 680) return;
-    const center = workPage.getBoundingClientRect().top + workPage.clientHeight / 2;
-    let closest = 0;
-    let distance = Infinity;
-    workProjects.forEach((project, index) => {
-      const box = project.getBoundingClientRect();
-      const nextDistance = Math.abs(box.top + box.height / 2 - center);
-      if (nextDistance < distance) { distance = nextDistance; closest = index; }
-    });
-    if (closest !== activeProject) setPreview(closest);
-  }, { passive: true });
-
-  const mobileWorkVideos = [...workPage.querySelectorAll('.work-mobile-media video')];
-  if (mobileWorkVideos.length && 'IntersectionObserver' in window) {
-    const mobileWorkObserver = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        const video = entry.target;
-        if (entry.isIntersecting) video.play().catch(() => {});
-        else video.pause();
-      });
-    }, { root: workPage, threshold: .2 });
-    mobileWorkVideos.forEach(video => mobileWorkObserver.observe(video));
-  }
 
   workPage.addEventListener('keydown', event => {
     if (event.key === 'ArrowDown' || event.key === 'ArrowRight') {
@@ -192,38 +131,9 @@ if (workPage && workProjects.length) {
     workPage.hidden = !active;
     workPage.classList.toggle('is-active', active);
     if (active) setPreview(activeProject);
-    if (aboutPage) {
-      const aboutActive = window.location.hash === '#about';
-      aboutPage.hidden = !aboutActive;
-      aboutPage.classList.toggle('is-active', aboutActive);
-      if (aboutActive) {
-        aboutPage.focus({ preventScroll: true });
-        runAboutReveal();
-      }
-      if (contactPage) {
-        const contactActive = window.location.hash === '#contact';
-        contactPage.hidden = !contactActive;
-        contactPage.classList.toggle('is-active', contactActive);
-        if (contactActive) contactPage.focus({ preventScroll: true });
-      }
-      if (academyPage) {
-        const academyActive = window.location.hash === '#academy';
-        academyPage.hidden = !academyActive;
-        academyPage.classList.toggle('is-active', academyActive);
-        if (academyActive) academyPage.focus({ preventScroll: true });
-      }
-    }
   }
   window.addEventListener('hashchange', syncWorkRoute);
   syncWorkRoute();
-} else if (aboutPage) {
-  const syncAboutRoute = () => {
-    const active = window.location.hash === '#about';
-    aboutPage.hidden = !active;
-    aboutPage.classList.toggle('is-active', active);
-  };
-  window.addEventListener('hashchange', syncAboutRoute);
-  syncAboutRoute();
 }
 
 /* ── Hand-drawn storyboard preloader ───────────────────────────────────── */
@@ -232,18 +142,12 @@ const preloaderCanvas = document.querySelector('#preloader-canvas');
 const preloaderSvgStage = document.querySelector('#preloader-svg-stage');
 const preloaderSkip = document.querySelector('#preloader-skip');
 const paperPreloader = document.querySelector('.preloader-paper-mode');
-const preloaderAlreadySeen = sessionStorage.getItem('motionz-preloader-complete') === 'true';
 
-if (preloaderAlreadySeen) {
-  preloader?.remove();
-  revealSite();
-}
-
-if (paperPreloader && !preloaderAlreadySeen) {
+if (paperPreloader) {
   const written = document.querySelector('#preloader-written');
   const camera = document.querySelector('#preloader-camera');
   const lottieContainer = document.querySelector('#camera-snap-lottie');
-  const sentence = 'Everything you remember was preserved through a lens';
+  const sentence = 'Everything you remember was preserved through a lens.';
   let paperFinished = false;
   const typedLetters = [];
 
@@ -265,7 +169,6 @@ if (paperPreloader && !preloaderAlreadySeen) {
   function finishPaperPreloader() {
     if (paperFinished) return;
     paperFinished = true;
-    sessionStorage.setItem('motionz-preloader-complete', 'true');
     revealSite();
     paperPreloader.classList.add('is-done');
     paperPreloader.setAttribute('aria-hidden', 'true');
@@ -300,7 +203,7 @@ if (paperPreloader && !preloaderAlreadySeen) {
     const writingTime = sentence.length * 58 + 680;
     window.setTimeout(showCameraSnap, writingTime);
   }, 180);
-} else if (preloader && preloaderSvgStage && !preloaderAlreadySeen) {
+} else if (preloader && preloaderSvgStage) {
 
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const svgFiles = [
@@ -458,7 +361,6 @@ if (paperPreloader && !preloaderAlreadySeen) {
   function finishSvgPreloader() {
     if (svgFinished) return;
     svgFinished = true;
-    sessionStorage.setItem('motionz-preloader-complete', 'true');
     revealSite();
     preloader.classList.remove('is-brand');
     preloader.classList.add('is-done');
@@ -497,7 +399,7 @@ if (paperPreloader && !preloaderAlreadySeen) {
     }, elapsed + 320);
   }
   runSvgPreloader();
-} else if (preloader && preloaderCanvas && !preloaderAlreadySeen) {
+} else if (preloader && preloaderCanvas) {
   const ctx = preloaderCanvas.getContext('2d');
   const INK = '#f5f2ea';
   const ACCENT = '#ff3b30';
@@ -684,7 +586,6 @@ if (paperPreloader && !preloaderAlreadySeen) {
   function finishPreloader() {
     if (finished) return;
     finished = true;
-    sessionStorage.setItem('motionz-preloader-complete', 'true');
     revealSite();
     preloader.classList.remove('is-brand');
     preloader.classList.add('is-done');
@@ -775,7 +676,6 @@ if (reelTrack) {
   let halfW    = 0;            // half the track width (= one set width)
   const reelItems = [...reelTrack.querySelectorAll('.reel-item')];
   const reelVideos = [...reelTrack.querySelectorAll('video')];
-  const visibleReelItems = new WeakSet();
 
   function measure() {
     // Measure the first duplicated set directly to avoid a seam from
@@ -791,33 +691,14 @@ if (reelTrack) {
     video.defaultMuted = true;
     video.loop = true;
     video.preload = 'auto';
-    video.addEventListener('loadeddata', () => {
-      if (visibleReelItems.has(video.closest('.reel-item'))) video.play().catch(() => {});
-    });
-    video.addEventListener('stalled', () => {
-      if (visibleReelItems.has(video.closest('.reel-item'))) video.play().catch(() => {});
-    });
+    video.addEventListener('loadeddata', () => video.play().catch(() => {}));
+    video.addEventListener('stalled', () => video.play().catch(() => {}));
     video.addEventListener('ended', () => {
       video.currentTime = 0;
       video.play().catch(() => {});
     });
+    video.play().catch(() => {});
   });
-
-  const reelVisibility = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      const item = entry.target;
-      const video = item.querySelector('video');
-      if (!video) return;
-      if (entry.isIntersecting) {
-        visibleReelItems.add(item);
-        video.play().catch(() => {});
-      } else {
-        visibleReelItems.delete(item);
-        video.pause();
-      }
-    });
-  }, { root: reelTrack.parentElement, threshold: 0.08 });
-  reelItems.forEach(item => reelVisibility.observe(item));
 
   function wrapOffset() {
     if (halfW <= 0) return;
@@ -829,7 +710,6 @@ if (reelTrack) {
 
   // Wheel/trackpad: prevent vertical page scroll, add to momentum instead
   document.addEventListener('wheel', e => {
-    if (workPage?.classList.contains('is-active') || aboutPage?.classList.contains('is-active') || contactPage?.classList.contains('is-active') || academyPage?.classList.contains('is-active')) return;
     e.preventDefault();
     // deltaY > 0 = scroll down = move reel forward (left); deltaX for horizontal trackpads
     const delta = Math.abs(e.deltaY) > Math.abs(e.deltaX) ? e.deltaY : e.deltaX;
