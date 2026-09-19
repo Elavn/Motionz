@@ -157,6 +157,20 @@ function syncSectionRoute() {
 window.addEventListener('hashchange', syncSectionRoute);
 syncSectionRoute();
 
+/* Academy intro → application transition. */
+const academyEnter = document.querySelector('#academy-enter');
+const academyIntro = document.querySelector('#academy-intro');
+const academyApplication = document.querySelector('#academy-application');
+
+academyEnter?.addEventListener('click', () => {
+  academyIntro?.classList.add('is-dismissed');
+  academyApplication?.classList.add('is-visible');
+  academyApplication?.setAttribute('aria-hidden', 'false');
+  window.setTimeout(() => {
+    academyApplication?.querySelector('input')?.focus({ preventScroll: true });
+  }, 720);
+});
+
 /* ── Hand-drawn storyboard preloader ───────────────────────────────────── */
 const preloader = document.querySelector('#preloader');
 const preloaderCanvas = document.querySelector('#preloader-canvas');
